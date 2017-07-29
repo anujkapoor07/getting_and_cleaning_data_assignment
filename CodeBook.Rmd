@@ -1,0 +1,53 @@
+---
+title: "Getting and cleaning data - codebook"
+author: "Anuj Kapoor"
+date: "July 29, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+The goal of this codebook is to describe the variables, the data, any transformations, and the work that was performed to clean up the data.
+
+## Source of the data
+
+The data was obtained from the UCI Machine Learning Repository website:
+(http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) and contains data collected on various activities performed by individuals wearing a smartphone.
+
+## Variables and the data
+
+* Activity  - these include the various activities that each subject performed.  The experiment evaluated a total of 6 activities (i.e. laying, sitting, standing, walking, walking uphill, and walking downhill)
+* Subject - each number is an identifier for a unique subject that was studied.  A total of 30 subjects were studied.
+* Features - the full data set summarized in 560 unique factors for each subject.  The tidy data set contains only the 66 most important factors. 
+* Training vs. test data: The original file separated the data into two parts - training data containing ~30% of the sample, and test data containing ~70% of the sample.
+* Inertial signals - Inertial signals was also included in the data set, but not used.
+
+
+## Transformations and the work done on the data:
+
+1. The zip file containing the data was downloaded and extracted
+2. The training and test data was merged.  Specifically, the activity, subject, and features files were merged by adding the rows from the test data in each file to the bottom of the training data.
+3. All data, except for select measurements of mean and standard deviation, were excluded.
+4. The activity labels were made more descriptive.  The original data set used variables from 1 to 6 to denote each activity.  Using the activity labels file, we changed each number to descriptive text.
+5. Changed the names of the individual features to be more descriptive (e.g. changed t to time, f to frequency, acc to accelerometer)
+6. Created a tidy data set that aggregates on activity and subject.  Output of the script is a text file.
+
+
+## Acknowledgements:
+
+This assignment was easy to execute on, but difficult to understand.  The author got help from the following resources:
+
+
+http://rmarkdown.rstudio.com/lesson-1.html
+
+https://rstudio-pubs-static.s3.amazonaws.com/37290_8e5a126a3a044b95881ae8df530da583.html
+
+https://github.com/hglennrock/getting-cleaning-data-project
+
+https://rpubs.com/Zanin_Pavel/158283
+
+
